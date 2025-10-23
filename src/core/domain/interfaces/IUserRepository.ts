@@ -6,6 +6,7 @@ import type { User, UserAttributes } from "../models/User";
 
 export interface IUserRepository {
   findById(id: string): Promise<User | null>;
+  findByName(name: string): Promise<User | null>;
   findAll(
     filterDto: FindAllUsersFilterDto,
     pagingDto: PagingDto

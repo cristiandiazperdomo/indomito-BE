@@ -60,4 +60,12 @@ export class UserRepository implements IUserRepository {
     foundUser.update(user);
     return foundUser;
   }
+
+  async findByName(name: string): Promise<User | null> {
+    try {
+      return await User.findOne({ where: { name } });
+    } catch (error) {
+      throw new Error("Error buscando usuario por nombre");
+    }
+  }
 }

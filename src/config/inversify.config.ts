@@ -54,6 +54,10 @@ import { CreateUserDocument } from "../application/use_cases/UserDocument/Create
 import { FindUserDocumentByUserId } from "../application/use_cases/UserDocument/FindUserDocumentByUserId";
 import { IUserDocumentRepository } from "../core/domain/interfaces/IUserDocumentRepository";
 import { UserDocumentRepository } from "../infrastructure/repositories/UserDocument/UserDocumentRepository";
+import { Login } from "../application/use_cases/Auth/Login";
+import { AuthController } from "../presentation/http/controller/Auth/AuthController";
+import { RefreshToken } from "../application/use_cases/Auth/RefreshToken";
+import { ValidateToken } from "../application/use_cases/Auth/ValidateToken";
 
 const container = new Container();
 
@@ -169,6 +173,12 @@ const userDocumentContainer = () => {
     .to(FindUserDocumentByUserId);
   container.bind<UserDocumentController>(UserDocumentController).toSelf();
 };
+const authContainer = () => {
+  container.bind<Login>(TYPES.Login).to(Login);
+  container.bind<RefreshToken>(TYPES.RefreshToken).to(RefreshToken);
+  container.bind<ValidateToken>(TYPES.ValidateToken).to(ValidateToken);
+  container.bind<AuthController>(AuthController).toSelf();
+};
 
 const setContainers = () => {
   userContainer();
@@ -178,6 +188,7 @@ const setContainers = () => {
   orderContainer();
   productDocumentContainer();
   userDocumentContainer();
+  authContainer();
 };
 
 setContainers();

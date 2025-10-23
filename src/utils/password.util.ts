@@ -6,3 +6,10 @@ export async function hashPassword(plainPassword: string): Promise<string> {
   const hashed = await bcrypt.hash(plainPassword, saltRounds);
   return hashed;
 }
+
+export async function comparePasswords(
+  plainText: string,
+  hashed: string
+): Promise<boolean> {
+  return await bcrypt.compare(plainText, hashed);
+}

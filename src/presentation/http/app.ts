@@ -7,6 +7,7 @@ import { router as IngredientRoutes } from "./routes/IngredientRoutes";
 import { router as OrderRoutes } from "./routes/OrderRoutes";
 import { router as ProductDocumentRoutes } from "./routes/ProductDocumentRoutes";
 import { router as UserDocumentRoutes } from "./routes/UserDocumentRoutes";
+import { router as authRoutes } from "./routes/AuthRoutes";
 
 export const app = express();
 
@@ -21,6 +22,7 @@ app.use("/ingredients", IngredientRoutes);
 app.use("/orders", OrderRoutes);
 app.use("/product-documents", ProductDocumentRoutes);
 app.use("/user-documents", UserDocumentRoutes);
+app.use("/auth", authRoutes);
 
 app.get("/status", (req, res) => {
   res.json({

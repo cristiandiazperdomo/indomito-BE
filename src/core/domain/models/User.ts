@@ -40,7 +40,7 @@ export class User
           allowNull: false,
         },
         password: {
-          type: DataTypes.STRING(48),
+          type: DataTypes.STRING(100),
           allowNull: false,
         },
       },

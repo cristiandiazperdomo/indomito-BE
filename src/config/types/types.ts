@@ -1,3 +1,4 @@
+import { AuthTypes } from "./Auth";
 import { CategoryTypes } from "./Category";
 import { IngredientTypes } from "./Ingredients";
 import { OrderTypes } from "./Order";
@@ -13,5 +14,7 @@ export const TYPES = {
   ...IngredientTypes,
   ...OrderTypes,
   ...ProductDocumentTypes,
-  ...UserDocumentTypes
+  ...UserDocumentTypes,
+  ...IngredientTypes,
+  ...AuthTypes,
 };
